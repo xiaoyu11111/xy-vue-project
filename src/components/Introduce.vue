@@ -14,7 +14,7 @@ export default {
     },
     data(){
         return{
-            CN:'vue网页端开发模板'
+            CN:'vue网页端'
         }
     }
 }
