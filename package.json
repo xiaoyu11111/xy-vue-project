@@ -7,7 +7,8 @@
     "sit": "vue-cli-service build --mode sit",
     "prod": "vue-cli-service build --mode prod",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "gh-pages": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
+    "gh-pages": "^3.1.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.11"
