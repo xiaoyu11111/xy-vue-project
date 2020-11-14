@@ -12,6 +12,7 @@ module.exports = {
     productionSourceMap:false,
     // webpack-dev-server 相关配置
     devServer: {
+        historyApiFallback: true,
         /* 自动打开浏览器 */
         open: false,
         /* 设置为0.0.0.0则所有的地址均能访问 */
