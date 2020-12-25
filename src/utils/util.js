@@ -15,6 +15,51 @@ const GetRequest =() =>{
 	return theRequest;
 }
 
+const getMaxAndMin = (brr) => {
+  var arr = []
+  brr.map(t => {
+  var codeArr = t.open_result.split(',')
+  var num = 0
+  codeArr.map(d => {num += +d})
+  arr.push(num <= 22 ? '小' : '大')
+  return t
+  })
+  var num = 1
+  var newArr = []
+  arr.map((a, i) => {
+      if(i === 0){
+       num = 1
+      }
+      if(a === arr[i - 1]) {
+        num += 1
+        newArr[i-1] = ''
+      }else{
+        num = 1
+      }
+  newArr.push({data: a + '*'+ num + '*', qishu: brr[i].open_phase.slice(-2)})
+  return a
+  })
+  return newArr.filter(d => d !== "")
+}
+
+const getMaxAndMinNum = (arr) => {
+  arr = arr.filter(a => a.data)
+  var num = 0
+  var newObj = {}
+  arr.map((a, i) => {
+      if(newObj[a]){
+         num = newObj[a] + 1
+      }else{
+          num = 1
+      }
+      newObj[a] = num
+  return a
+  })
+  return newObj
+}
+
 export default {
-	GetRequest
+  GetRequest,
+  getMaxAndMin,
+  getMaxAndMinNum
 }

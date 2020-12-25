@@ -25,7 +25,7 @@ module.exports = {
         proxy: {
             '/api': {
                 /* 目标代理服务器地址 */
-                target: 'http://xxx.com.cn',
+                target: 'https://www.vip2-tm30.com/',
                 /* 允许跨域 */
                 changeOrigin: true,
                 /* 允许websocket */
@@ -35,6 +35,16 @@ module.exports = {
                   '^/api': ''
                 }
             },
+            '/socket.io': {
+                target: 'http://127.0.0.1:7001',
+                ws: true,
+                changeOrigin: true
+              },
+              'sockjs-node': {
+                target: 'http://127.0.0.1:7001',
+                ws: false,
+                changeOrigin: true
+              }
         },
     },
     configureWebpack: config => {

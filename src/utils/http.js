@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.timeout = 5000;
+// axios.defaults.timeout = 5000;
 //使用.env文件时请使用下面的方式配置请求地址
-axios.defaults.baseURL = process.env.VUE_APP_API_APIBASEURL;
 
 //*打包统一命令npm run build 请使用下面的方式配置请求地址（推荐）
 // if (process.env.NODE_ENV === 'development') {
