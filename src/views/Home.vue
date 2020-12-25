@@ -40,11 +40,41 @@ export default {
     //     }
     //   })
     // })
-    let arr = this.$util.getMaxAndMin(arr20201225)
-    let obj = this.$util.getMaxAndMinNum(arr)
-    this.arr = arr
-    this.obj = obj
-    console.log(obj, 'r======')
+    try {
+       this.$get('https://fastlottery.vip/all/home_Index_dateData?code=jsssc&p=1&limit=10000').then((res) => {
+        let arr = this.$util.getMaxAndMin(res.data)
+        let obj = this.$util.getMaxAndMinNum(arr)
+        this.arr = arr
+        this.obj = obj
+      })
+//       fetch("/app/all/home_Index_getResultTrend", {
+//   "headers": {
+//     "accept": "*/*",
+//     "accept-language": "zh-CN,zh;q=0.9",
+//     "cache-control": "no-cache",
+//     "content-type": "application/json;charset=UTF-8",
+//     "form-token": "",
+//     "pragma": "no-cache",
+//     "sec-fetch-dest": "empty",
+//     "sec-fetch-mode": "cors",
+//     "sec-fetch-site": "same-origin",
+//     "x-requested-with": "XMLHttpRequest"
+//   },
+//   "referrer": "https://www.vip2-tm30.com/new_mobile/",
+//   "referrerPolicy": "strict-origin-when-cross-origin",
+//   "body": "{page:1,code:'jsssc'}",
+//   "method": "POST",
+//   "mode": "cors",
+//   "credentials": "include"
+// }).then((res) => {
+//   console.log(res, '======')
+// })
+    } catch (error) {
+        let arr = this.$util.getMaxAndMin(arr20201225)
+        let obj = this.$util.getMaxAndMinNum(arr)
+        this.arr = arr
+        this.obj = obj
+    }
   }
 }
 </script>

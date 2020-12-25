@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 // axios.defaults.timeout = 5000;
+axios.defaults.baseURL = '/api'
 //使用.env文件时请使用下面的方式配置请求地址
 
 //*打包统一命令npm run build 请使用下面的方式配置请求地址（推荐）
