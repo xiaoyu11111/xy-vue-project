@@ -36,14 +36,14 @@ const getMaxAndMin = (brr) => {
       }else{
         num = 1
       }
-  newArr.push({data: a + '*'+ num + '*', qishu: brr[i].open_phase.slice(-2)})
+  newArr.push({data: a + '*'+ num, qishu: brr[i].open_phase.slice(-2)})
   return a
   })
   return newArr.filter(d => d !== "")
 }
 
 const getMaxAndMinNum = (arr) => {
-  arr = arr.filter(a => a.data)
+  arr = arr.map(a => a.data)
   var num = 0
   var newObj = {}
   arr.map((a, i) => {

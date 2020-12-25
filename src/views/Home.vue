@@ -1,11 +1,15 @@
 <template>
   <div class="home">
-    <Introduce msg="This is a vue-web template."/>
+    <div>
+      <div class="itblock item-obj" v-for="(item, key) in obj" :key="key">
+        {{key}}: {{item}}
+      </div>
+    </div>
     <div class="itblock item" v-for="(item, i) in arr" :key="i">
-      <div class='item-box' :style="{background: item.data.indexOf('小') >= 0 ? 'skyblue' : 'red'}" 
+      <div class='item-box' :style="{background: item.data.indexOf('小') >= 0 ? '#FFB269' : '#64D9A8'}" 
          v-for="(a, index) in (+item.data.split('*')[1])" :key="index"
         >{{index + 1 === (+item.data.split('*')[1]) ? (+item.data.split('*')[1]) : ''}}</div>
-        <div>{{item.qishu}}</div>
+        <div :class="{fontBig: +item.data.split('*')[1] >=7 }" >{{item.qishu}}</div>
     </div>
   </div>
 </template>
@@ -21,7 +25,7 @@ export default {
   data() {
     return {
       arr: [],
-      obj: {}
+      obj: {},
     }
   },
   components: {
@@ -40,7 +44,7 @@ export default {
     let obj = this.$util.getMaxAndMinNum(arr)
     this.arr = arr
     this.obj = obj
-    console.log(arr, obj)
+    console.log(obj, 'r======')
   }
 }
 </script>
@@ -53,8 +57,18 @@ export default {
     margin: 6px;
     text-align: center;
   }
+  .item-obj{
+    margin: 6px;
+    text-align: center;
+  }
   .item-box{
     height: 20px;
+  }
+  .fontBig {
+    background: rgb(211, 60, 60);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
   }
 }
 </style>
