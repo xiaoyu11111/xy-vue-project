@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <Input v-model="value5" type="textarea" placeholder="Enter something..." />
+    <Button type="primary" icon="ios-search" @click="btn">Search</Button>
     <div>
       <div class="itblock item-obj" v-for="(item, key) in obj" :key="key">
         {{key}}: {{item}}
@@ -9,7 +11,7 @@
       <div class='item-box' :style="{background: item.data.indexOf('小') >= 0 ? '#FFB269' : '#64D9A8'}" 
          v-for="(a, index) in (+item.data.split('*')[1])" :key="index"
         >{{index + 1 === (+item.data.split('*')[1]) ? (+item.data.split('*')[1]) : ''}}</div>
-        <div :class="{fontBig: +item.data.split('*')[1] >=7 }" >{{item.qishu}}</div>
+        <div :class="{fontBig: +item.data.split('*')[1] >=7 }" :title="item.time.split(' ')[1]">{{item.data.split('*')[0]}}{{item.qishu}}</div>
     </div>
   </div>
 </template>
@@ -26,10 +28,16 @@ export default {
     return {
       arr: [],
       obj: {},
+      value5: ''
     }
   },
   components: {
     Introduce
+  },
+  methods: {
+    btn () {
+    console.log(this.value5, 'value5====')
+    }
   },
   mounted() {
     // dd.ready(function () {
@@ -41,11 +49,12 @@ export default {
     //   })
     // })
     try {
-       this.$get('https://fastlottery.vip/all/home_Index_dateData?code=jsssc&p=1&limit=10000').then((res) => {
+       this.$get('/all/home_Index_dateData?code=jsssc&p=1&limit=10000').then((res) => {
         let arr = this.$util.getMaxAndMin(res.data)
         let obj = this.$util.getMaxAndMinNum(arr)
         this.arr = arr
         this.obj = obj
+        console.log(obj,'==')
       })
 //       fetch("/app/all/home_Index_getResultTrend", {
 //   "headers": {

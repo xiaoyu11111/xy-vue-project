@@ -36,7 +36,7 @@ const getMaxAndMin = (brr) => {
       }else{
         num = 1
       }
-  newArr.push({data: a + '*'+ num, qishu: brr[i].open_phase.slice(-2)})
+  newArr.push({data: a + '*'+ num, qishu: brr[i].open_phase.slice(-2), time: brr[i].open_time})
   return a
   })
   return newArr.filter(d => d !== "")
